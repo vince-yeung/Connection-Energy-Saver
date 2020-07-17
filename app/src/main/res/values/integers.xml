@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="bluetooth_max_timer_value">59</integer>
+
+</resources>

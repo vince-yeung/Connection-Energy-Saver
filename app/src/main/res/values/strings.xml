@@ -1,0 +1,18 @@
+<resources>
+
+    <string name="app_name">Connection Energy Saver</string>
+
+    <!--Common-->
+    <string name="common_enabled">enabled</string>
+    <string name="common_disabled">disabled</string>
+
+    <!-- Bluetooth -->
+    <string name="error_no_bluetooth_support">Bluetooth is not supported on this device.</string>
+    <string name="bluetooth_title">Bluetooth</string>
+    <string name="bluetooth_toggle_label">Use Bluetooth</string>
+    <plurals name="bluetooth_timer_label">
+        <item quantity="one">Timer: %d Minute</item>
+        <item quantity="other">Timer: %d Minutes</item>
+    </plurals>
+
+</resources>

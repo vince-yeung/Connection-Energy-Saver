@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.vinceyeung.connectionenergysaver.settings.SettingsViewModel" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_large"
+            android:layout_marginEnd="@dimen/padding_large">
+
+            <TextView
+                android:id="@+id/bluetooth_title_text_view"
+                style="@style/SettingTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_small"
+                android:text="@string/bluetooth_title"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/bluetooth_switch_label"
+                style="@style/SettingLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_large"
+                android:layout_marginTop="@dimen/padding_small"
+                android:layout_marginEnd="@dimen/padding_large"
+                android:text="@string/bluetooth_toggle_label"
+                app:layout_constraintTop_toBottomOf="@id/bluetooth_title_text_view" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/bluetooth_enable_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/bluetooth_switch_label"
+                app:layout_constraintTop_toBottomOf="@id/bluetooth_switch_label" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/bluetooth_timer_label"
+                style="@style/SettingLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_large"
+                android:layout_marginTop="@dimen/padding_small"
+                android:layout_marginEnd="@dimen/padding_large"
+                android:text="@{viewModel.bluetoothTimerString}"
+                app:layout_constraintTop_toBottomOf="@id/bluetooth_enable_switch"
+                tools:text="Timer: 1 Minute" />
+
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/bluetooth_timer_seek_bar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="@integer/bluetooth_max_timer_value"
+                app:layout_constraintEnd_toEndOf="@id/bluetooth_timer_label"
+                app:layout_constraintStart_toStartOf="@id/bluetooth_timer_label"
+                app:layout_constraintTop_toBottomOf="@id/bluetooth_timer_label" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>
