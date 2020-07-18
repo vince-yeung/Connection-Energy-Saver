@@ -1,9 +1,7 @@
 package com.vinceyeung.connectionenergysaver.settings
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -12,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.vinceyeung.connectionenergysaver.R
 import com.vinceyeung.connectionenergysaver.databinding.FragmentSettingsBinding
+import com.vinceyeung.connectionenergysaver.utilities.showAlertDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,10 +20,16 @@ class SettingsFragment : Fragment() {
 
     private lateinit var binding: FragmentSettingsBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_settings, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+
+        setHasOptionsMenu(true)
 
         return binding.root
     }
@@ -39,7 +44,8 @@ class SettingsFragment : Fragment() {
             viewModel.enableBluetooth(isChecked)
         }
 
-        binding.bluetoothTimerSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        binding.bluetoothTimerSeekBar.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
             }
 
@@ -60,6 +66,21 @@ class SettingsFragment : Fragment() {
                 }
             }
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_main, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.info -> showAlertDialog(
+                requireContext(), R.string.info_dialog_title, R.string.info_dialog_message
+            ).show()
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     private fun disableBluetoothSupport() {

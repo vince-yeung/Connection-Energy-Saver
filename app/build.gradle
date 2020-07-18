@@ -79,7 +79,6 @@ dependencies {
     androidTestImplementation "androidx.test:rules:$androidx_test"
 }
 
-
 kapt {
     correctErrorTypes = true
 }

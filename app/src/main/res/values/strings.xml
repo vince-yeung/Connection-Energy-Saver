@@ -5,6 +5,8 @@
     <!--Common-->
     <string name="common_enabled">enabled</string>
     <string name="common_disabled">disabled</string>
+    <string name="common_ok">OK</string>
+    <string name="common_info">Info</string>
 
     <!-- Bluetooth -->
     <string name="error_no_bluetooth_support">Bluetooth is not supported on this device.</string>
@@ -14,5 +16,12 @@
         <item quantity="one">Timer: %d Minute</item>
         <item quantity="other">Timer: %d Minutes</item>
     </plurals>
+
+    <!-- Menu -->
+    <string name="menu_info">Info</string>
+
+    <!-- Alert Dialog -->
+    <string name="info_dialog_title">Information</string>
+    <string name="info_dialog_message">By enabling Bluetooth, this app will observe your bluetooth connectivity and preserve battery by turning it off when it isn\'t being used.</string>
 
 </resources>

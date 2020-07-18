@@ -35,7 +35,9 @@ class BluetoothReceiver : BroadcastReceiver() {
                 BluetoothDevice.ACTION_ACL_DISCONNECTED -> startBluetoothJob(context)
                 BluetoothDevice.ACTION_ACL_CONNECTED -> cancelBluetoothJob(context)
                 BluetoothAdapter.ACTION_STATE_CHANGED -> {
-                    when (intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR)) {
+                    when (intent.getIntExtra(
+                        BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR
+                    )) {
                         BluetoothAdapter.STATE_ON -> startBluetoothJob(context)
                     }
                 }
@@ -74,7 +76,9 @@ class BluetoothReceiver : BroadcastReceiver() {
         val intent = Intent(context, BluetoothReceiver::class.java)
         intent.action = DISABLE_BLUETOOTH_COMMAND
 
-        return PendingIntent.getBroadcast(context, BLUETOOTH_ALARM_ID, intent, PendingIntent.FLAG_ONE_SHOT)
+        return PendingIntent.getBroadcast(
+            context, BLUETOOTH_ALARM_ID, intent, PendingIntent.FLAG_ONE_SHOT
+        )
     }
 
     private fun disableBluetooth() {

@@ -40,6 +40,14 @@ class SettingsFragmentTest {
     }
 
     @Test
+    fun checkInfoDialog() {
+        onView(withId(R.id.info)).perform(click())
+        onView(withText(R.string.info_dialog_title)).check(matches(isDisplayed()))
+        onView(withText(R.string.info_dialog_message)).check(matches(isDisplayed()))
+        onView(withText(R.string.common_ok)).check(matches(isDisplayed()))
+    }
+
+    @Test
     fun checkBluetoothNotSupported() {
         if (BluetoothAdapter.getDefaultAdapter() == null) {
             onView(withId(R.id.bluetooth_enable_switch)).check(matches(not(isEnabled())))
