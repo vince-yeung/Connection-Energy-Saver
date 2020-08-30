@@ -44,15 +44,36 @@ class SettingsViewModelTest {
     @Config(sdk = [Build.VERSION_CODES.O_MR1])
     @Test
     fun isCheckingBluetoothTest() {
-        val isCheckingBluetooth = repository?.isCheckingBluetooth()
-        assertEquals(isCheckingBluetooth, viewModel?.isCheckingBluetooth())
+        repository?.enableBluetooth(true)
+        assertEquals(true, viewModel?.isCheckingBluetooth())
+    }
+
+    @Config(sdk = [Build.VERSION_CODES.O_MR1])
+    @Test
+    fun isCheckBluetoothTest2() {
+        repository?.enableBluetooth(false)
+        assertEquals(false, viewModel?.isCheckingBluetooth())
     }
 
     @Config(sdk = [Build.VERSION_CODES.O_MR1])
     @Test
     fun getBluetoothTimerTest() {
-        val bluetoothTimer = repository?.getBluetoothTimer()
-        assertEquals(bluetoothTimer, viewModel?.getBluetoothTimer())
+        repository?.saveBluetoothTimer(10)
+        assertEquals(10, viewModel?.getBluetoothTimer())
+    }
+
+    @Config(sdk = [Build.VERSION_CODES.O_MR1])
+    @Test
+    fun getBluetoothTimerTest2() {
+        repository?.saveBluetoothTimer(20)
+        assertEquals(20, viewModel?.getBluetoothTimer())
+    }
+
+    @Config(sdk = [Build.VERSION_CODES.O_MR1])
+    @Test
+    fun getBluetoothTimerTest3() {
+        repository?.saveBluetoothTimer(30)
+        assertEquals(30, viewModel?.getBluetoothTimer())
     }
 
     @After
