@@ -11,7 +11,8 @@ import com.vinceyeung.connectionenergysaver.utilities.BLUETOOTH_DEFAULT_TIMER
 import timber.log.Timber
 
 class SettingsViewModel @ViewModelInject constructor(
-    private val app: Application, private val repository: SettingsRepository
+    private val app: Application,
+    private val repository: SettingsRepository
 ) : ViewModel() {
 
     private val _isBluetoothSupported = MutableLiveData<Boolean>()
